@@ -76,12 +76,56 @@ def length_of_longest_substring_approach_2(s: str) -> int:
     return longest
 # endregion
 
+# region Longest Palindromic Substring
+# Given a string s, return the longest palindromic substring in s.
+#
+# Example 1:
+#
+# Input: s = "babad"
+# Output: "bab"
+# Explanation: "aba" is also a valid answer.
+# Example 2:
+#
+# Input: s = "cbbd"
+# Output: "bb"
 
+def longest_palindrome(s: str) -> str:
+    return 4%6
+
+# endregion
+
+# region ZigZag String Conversion
+# The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+# P   A   H   N
+# A P L S I I G
+# Y   I   R
+# And then read line by line: "PAHNAPLSIIGYIR"
+#
+# Write the code that will take a string and make this conversion given a number of rows:
+
+def convert_to_zig_zag(s:str, num_rows:int)->str:
+    template = list(range(num_rows)) + (list(range(num_rows-2, 0, -1)))
+    buckets = [''] * len(template)
+    for i, char in enumerate(s):
+        buckets[template[i % len(template)]] += char
+
+    return''.join(buckets)
+
+# endregion
 
 if __name__ == '__main__':
     # region Longest substring without repeating characters
     # s = 'acbdbacd'
     # print('length of longest substring without repeating {}'.format(lengthOfLongestSubstring_approach_1(s)))
     # print('length of longest substring without repeating {}'.format(length_of_longest_substring_approach_2(s)))
+    # endregion
+
+    # region Longest Palindromic Substring
+    #print('longest palindromic string {}'.format(longest_palindrome('babad')))
+    # endregion
+
+    # region ZigZag String conversion
+    s = 'PAYPALISHIRING'
+    print('ZigZag pattern will be {}'.format(convert_to_zig_zag(s, 3)))
     # endregion
 
