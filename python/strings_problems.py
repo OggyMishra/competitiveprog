@@ -1,4 +1,7 @@
 # region Longest substring without repeating characters
+import os.path
+from typing import List
+
 
 # To, find out a sliding window problem :-
 # > First thing is, we have given something like an "Array" | OR | "String"
@@ -161,6 +164,41 @@ def is_valid_parenthesis(s:str)-> bool:
 
 # endregion
 
+# region Longest Common Prefix
+# Write a function to find the longest common prefix string amongst an array of strings.
+#
+# If there is no common prefix, return an empty string "".
+# Example 1:
+#
+# Input: strs = ["flower","flow","flight"]
+# Output: "fl"
+# Example 2:
+#
+# Input: strs = ["dog","racecar","car"]
+# Output: ""
+# Explanation: There is no common prefix among the input strings.
+
+def longest_common_prefix(strs: List[str])-> str:
+    # first find the smallest string in the list
+    if len(strs) == 0:
+        return ''
+    strs.sort(key=len)
+    # then run a loop from full length and find strings which are matching with it, otherwise keep reducing the length.
+    prefix = strs[0]
+    for i in range(len(prefix), 0, -1):
+        if all(prefix[:i] == strs[j][:i] for j in range(1, len(strs))):
+            return prefix[:i]
+    return ''
+
+def longest_common_prefix_approach2(strs: List[str]) -> str:
+    # using the python os module
+    if os.path.commonprefix(strs):
+        return os.path.commonprefix(strs)
+    else:
+        return ''
+
+# endregion
+
 if __name__ == '__main__':
     # region Longest substring without repeating characters
     # s = 'acbdbacd'
@@ -178,7 +216,13 @@ if __name__ == '__main__':
     # endregion
 
     # region IsValidParentheses
-    s = '([{[}])'
-    print('Is valid parentheses for given string = {}'.format(is_valid_parenthesis(s)))
+    # s = '([{[}])'
+    # print('Is valid parentheses for given string = {}'.format(is_valid_parenthesis(s)))
     # endregion
+
+    # region Longest Common Prefix
+    # strs = ['flower', 'flow', 'flight']
+    # print('longest common prefix for given list of strings are {}'.format(longest_common_prefix_approach2(strs)))
+    # endregion
+
 
