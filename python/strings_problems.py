@@ -113,6 +113,54 @@ def convert_to_zig_zag(s:str, num_rows:int)->str:
 
 # endregion
 
+# region Valid Parentheses
+# Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+#
+# An input string is valid if:
+#
+# Open brackets must be closed by the same type of brackets.
+# Open brackets must be closed in the correct order.
+# Every close bracket has a corresponding open bracket of the same type.
+
+# Example 1:
+#
+# Input: s = "()"
+# Output: true
+
+# Example 2:
+#
+# Input: s = "()[]{}"
+# Output: true
+
+
+# Example 3:
+#
+# Input: s = "(]"
+# Output: false
+
+def is_valid_parenthesis(s:str)-> bool:
+    brackets = []
+    for i, char in enumerate(s):
+        if brackets:
+            if brackets[-1] == '{' and char == '}':
+                brackets.pop()
+            elif brackets[-1] == '(' and char == ')':
+                brackets.pop()
+            elif brackets[-1] == '[' and char == ']':
+                brackets.pop()
+            else:
+                brackets.append(char)
+        else:
+            brackets.append(char)
+
+    if len(brackets) > 0:
+        return False
+    else:
+        return True
+
+
+# endregion
+
 if __name__ == '__main__':
     # region Longest substring without repeating characters
     # s = 'acbdbacd'
@@ -125,7 +173,12 @@ if __name__ == '__main__':
     # endregion
 
     # region ZigZag String conversion
-    s = 'PAYPALISHIRING'
-    print('ZigZag pattern will be {}'.format(convert_to_zig_zag(s, 3)))
+    # s = 'PAYPALISHIRING'
+    # print('ZigZag pattern will be {}'.format(convert_to_zig_zag(s, 3)))
+    # endregion
+
+    # region IsValidParentheses
+    s = '([{[}])'
+    print('Is valid parentheses for given string = {}'.format(is_valid_parenthesis(s)))
     # endregion
 
