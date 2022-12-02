@@ -200,6 +200,7 @@ def longest_common_prefix_approach2(strs: List[str]) -> str:
 # endregion
 
 if __name__ == '__main__':
+    pass
     # region Longest substring without repeating characters
     # s = 'acbdbacd'
     # print('length of longest substring without repeating {}'.format(lengthOfLongestSubstring_approach_1(s)))
